@@ -10,8 +10,8 @@ from django.db.models import Count
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
-# import pandas as pd
-# import numpy as ny
+import pandas as pd
+import numpy as ny
 
 
 class SearchListView(generics.ListCreateAPIView):
@@ -27,25 +27,20 @@ class SearchDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class         = SearchSerializers
     lookup_field             = 'id'
 
-@api_view(['GET'])
+@api_view(['Get'])
 def PopualerSearch(request):
     final=[]
-    ser = {}
-    res= Search.object.values('id','text','user','product').annotate(dcount=Count('product__id')).order_by('-dcount')[:5]
-    pro= Product.objects.get(id=res[0]['product'])
-    for i in res :
-       pro= Product.objects.get(id=i['product'])
-       ser = ProductSerializer(pro).data
-       final.append(ser)
-    return Response(final)
+    popularProduct=Search.object.exclude(product__id__isnull=True).values('product__id').annotate(ProCount=Count('product__id')).order_by('-ProCount')[:5]
+    for pro in popularProduct:
+        product=Product.objects.get(id=pro['product__id'])
+        final.append(product)
+    serialize=ProductSerializer(final,many=True).data
+    return Response(serialize)
 
 @api_view(['GET'])
-def RecommandedSearch(request):
-    res  = Search.object.values('id','text','user','product')
-    res2 = Brand.objects.values('id','Name')
-    res3 = Category.objects.values('id','Name')
-    df   = pd.merge(res,res2,res3,on='id')
-    #queryset = Search.object.all().select_related('user').select_related('product')
-    return Response('df')
-
-
+def RecommandedSearch(request,userid):
+    userSearch = Search.object.filter(user__id=userid).exclude(product__id__isnull=True).values('product__id')
+    productsBrand  = Product.objects.filter(id__in=userSearch).values('brand__id')
+    RecommedProducts = Product.objects.filter(brand__id__in=productsBrand)
+    serialize = ProductSerializer(RecommedProducts,many=True).data
+    return Response(serialize)
