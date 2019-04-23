@@ -12,7 +12,7 @@ class SearchManager(models.Manager):
 class Search(models.Model):
     text            =  models.TextField(blank=False,null=False)
     user            =  models.ForeignKey(User,on_delete=models.CASCADE)
-    product         =  models.ForeignKey(Product,on_delete=models.CASCADE)
+    product         =  models.ForeignKey(Product,on_delete=models.CASCADE,blank=True,null=True)
     updated         =  models.DateTimeField(auto_now=True)
     timestamp       =  models.DateTimeField(auto_now_add=True)
 
