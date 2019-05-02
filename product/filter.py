@@ -6,5 +6,6 @@ class ProductFilter(django_filters.FilterSet):
         fields = {
              'brand__Name':['icontains',]
            , 'Category__Name':['icontains',]
+           , 'name':['icontains',]
         }
  
