@@ -5,7 +5,6 @@ from user.models import User
 
 # Create your models here.
 class Like(models.Model):
-    like            =  models.BooleanField(default=False)
     review          =  models.ForeignKey(Review,on_delete=models.CASCADE)
     user            =  models.ForeignKey(User,on_delete=models.CASCADE)
     updated         =  models.DateTimeField(auto_now=True)

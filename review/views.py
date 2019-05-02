@@ -22,6 +22,6 @@ class ReviewDetailView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = []
     queryset               =  Review.objects.all()
     serializer_class       =  ReviewSerializer
-    lookup_field= 'product'
+    lookup_field= 'id'
     
 

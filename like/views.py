@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from .filter import LikeFilter
 from rest_framework import generics
 
 from .models import Like
@@ -11,8 +11,8 @@ class LikeList(generics.ListCreateAPIView):
     authentication_classes = []
     queryset               = Like.objects.all()
     serializer_class       = LikeSerializer
-    search_field           =('user__UserName','user__id','review__id','review__product','like__id')
-
+    filterset_class        = LikeFilter
+    search_field           = ('id')
 
 
 

@@ -7,7 +7,7 @@ class LikeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model= Like
-        fields=('id','like','review','user','AllReviews')
+        fields=('id','review','user','AllReviews')
     
     def get_AllReviews(self,obj):
          return ReviewSerializer(obj.review).data
