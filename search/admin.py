@@ -8,6 +8,4 @@ class MessageAdmin(admin.ModelAdmin):
              'text'
              ,'user'
              ,'product'
-             ,'updated'
-             ,'timestamp'
         ]

@@ -10,9 +10,6 @@ from django.db.models import Count
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
-import pandas as pd
-import numpy as ny
-
 
 class SearchListView(generics.ListCreateAPIView):
     permission_classes       = []

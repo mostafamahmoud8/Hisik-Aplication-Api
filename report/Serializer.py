@@ -1,6 +1,6 @@
 from rest_framework import serializers 
 from report.models import Report 
-from User.serializers import UserSerializers
+from user.serializer import UserSerializer
 from product.serializer import ProductSerializer
 
 class ReportSerializers(serializers.ModelSerializer):
@@ -9,20 +9,23 @@ class ReportSerializers(serializers.ModelSerializer):
     class Meta:
         model  = Report
         fields = [
-            'proudct',
+            'id',
+            'product',
             'user',
             'Description',
             'name',
             'brand',
             'category',
             'comment',
+            'PopUser',
+            'PopProduct',
             'updated',
             'timestamp'
         ]
 
     def get_PopUser(self,obj):
-         return User(obj.user).data
+         return UserSerializer(obj.user).data
 
     def get_PopProduct(self,obj):
-         return ProductSerializer(obj.product).data
+          return ProductSerializer(obj.product).data
 

@@ -7,6 +7,4 @@ class MessageAdmin(admin.ModelAdmin):
      fields=[
              'text'
              ,'user'
-             ,'updated'
-             ,'timestamp'
         ]

@@ -11,7 +11,7 @@ class ReportManager(models.Manager):
         return ReportQuerySet(self.model,using=self._db)
 
 class Report(models.Model):
-    proudct         =  models.ForeignKey(Product, on_delete=models.CASCADE)
+    product         =  models.ForeignKey(Product, on_delete=models.CASCADE)
     user            =  models.ForeignKey(User, on_delete=models.CASCADE)
     Description     =  models.TextField(blank=False,null=False)
     name            =  models.CharField(max_length=50,blank=False,null=False)

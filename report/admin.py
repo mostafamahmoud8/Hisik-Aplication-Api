@@ -5,13 +5,11 @@ from .models  import Report
 class ReportAdmin(admin.ModelAdmin):
      list_dispaly=('proudct','user')
      fields=[
-             'proudct'
+             'product'
              ,'user'
              ,'Description'
              ,'name'
              ,'brand'
              ,'category'
              ,'comment'
-             ,'updated'
-             ,'timestamp'
         ]
