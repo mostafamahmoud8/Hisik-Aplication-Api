@@ -10,6 +10,7 @@ class User(models.Model):
     Password        =  models.CharField(max_length=50,blank=False,null=False,default="")
     Email           =  models.EmailField(blank=False,null=False,default="",unique=True)
     DeviceID        =  models.CharField(max_length=100,blank=False,null=False,default="")
+    FCMToken        =  models.CharField(max_length=200,blank=False,null=False,default="")
     #IP              =  models.GenericIPAddressField(blank=False,null=False,unique=True,protocol='both',unpack_ipv4=False)
     Status          =  models.NullBooleanField()
     ImageURL        =  models.URLField(blank=True,null=True)

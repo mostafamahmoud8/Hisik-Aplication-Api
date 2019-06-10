@@ -6,9 +6,10 @@ from product.models import Product
 class NotificationUser(models.Model):
     Status     = models.NullBooleanField()
     Type       = models.IntegerField() 
-    user       = models.ForeignKey(User,on_delete=models.CASCADE)
-    product    = models.ForeignKey(Product,on_delete=models.CASCADE)
-    review     = models.ForeignKey(Review,on_delete=models.CASCADE)
+    notifyuser = models.ForeignKey(User,on_delete=models.CASCADE,related_name='user_notifyuser',default="")
+    owner      = models.ForeignKey(User,on_delete=models.CASCADE,default="")
+    product    = models.ForeignKey(Product,on_delete=models.CASCADE,null=True)
+    review     = models.ForeignKey(Review,on_delete=models.CASCADE,null=True)
     updated    = models.DateTimeField(auto_now=True)
     timestamp  = models.DateTimeField(auto_now_add=True)
 

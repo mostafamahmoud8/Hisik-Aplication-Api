@@ -5,5 +5,5 @@ urlpatterns = [
     path('', SearchListView.as_view(),name='SearchListCreate'),
     path('<int:id>/', SearchDetailView.as_view(),name='SearchDetail'),
     path('popular/',PopualerSearch),
-    path('recommanded/',RecommandedSearch),
+    path('recommanded/<int:userid>/',RecommandedSearch),
 ]
