@@ -7,8 +7,8 @@ from scan.models import Scan
 class NotificationAdmin(models.Model):
       Status = models.NullBooleanField()
       Type = models.IntegerField(blank=False,null=False) 
-      ProductReviewID = models.ForeignKey(Review,on_delete=models.CASCADE)
-      ScanId = models.ForeignKey(Scan,on_delete=models.CASCADE)
+      ProductReviewID = models.ForeignKey(Review,on_delete=models.CASCADE,null=True)
+      ScanId = models.ForeignKey(Scan,on_delete=models.CASCADE,null=True)
       updated = models.DateTimeField(auto_now=True)
       timestamp = models.DateTimeField(auto_now_add=True)
 
