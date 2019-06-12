@@ -18,4 +18,4 @@ class NotificationUser(models.Model):
         verbose_name_plural = "Users notificaions"
 
     def __str__(self):
-        return '{0}'.format(self.user.UserName)
+        return '{0}'.format(self.owner.UserName)

@@ -5,5 +5,6 @@ class UserNotificationFilter(django_filters.FilterSet):
         model = NotificationUser
         fields = {
              'owner__id':['exact',],
+             'Status':['exact',],
         }
  

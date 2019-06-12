@@ -23,7 +23,7 @@ class UserNotificationSerializer(serializers.ModelSerializer):
                  'timestamp']
                  
     def get_NotifyuserDetalis(self,obj):
-         return UserSerializer(obj.user).data
+         return UserSerializer(obj.notifyuser).data
     def get_productDetails(self,obj):
          return ProductSerializer(obj.product).data
     def get_reviewDetails(self,obj):
