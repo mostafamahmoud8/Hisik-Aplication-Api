@@ -25,7 +25,7 @@ SECRET_KEY = 'vf*oc+qwkch965g=ix5z&cu=xvn6c%+1*de()r4tpjng#%!(4_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.0.9"]
+ALLOWED_HOSTS = ["mostafaaziema.pythonanywhere.com"]
 
 
 # Application definition
@@ -139,7 +139,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-CORS_ORIGIN_WHITELIST='http://localhost:8100',
+CORS_ORIGIN_ALLOW_ALL = True
+
+#CORS_ORIGIN_WHITELIST='http://localhost:8100',
 
 REST_FRAMEWORK = {
 
